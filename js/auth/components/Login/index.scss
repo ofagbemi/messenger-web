@@ -1,0 +1,44 @@
+.login {
+  display: flex;
+  justify-content: center;
+  padding-top: 20vh;
+  height: 100%;
+  width: 100%;
+
+  > form {
+    text-align: center;
+
+    h1,
+    .get-started {
+      margin-bottom: 18px;
+    }
+
+    .input-row {
+      display: flex;
+
+      input {
+        min-width: 0;
+        width: auto;
+
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+      }
+    }
+
+    button,
+    input,
+    .input-row {
+      width: 400px;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-bottom: 20px;
+    }
+  }
+}
