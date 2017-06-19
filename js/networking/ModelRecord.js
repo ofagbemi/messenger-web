@@ -33,12 +33,15 @@ export default function ModelRecord(defaults) {
 
     static querySelector(state, params) {
       const queryUrl = this.queryUrl(params);
-      const results = state.getIn([
+      const ids = state.getIn([
         'networking',
         'results',
         queryUrl,
       ]);
-      return results;
+
+      return ids
+        ? ids.map(id => this.findSelector(state, { [this.idField]: id }))
+        : undefined;
     }
 
     static findUrl(params) {
@@ -49,7 +52,7 @@ export default function ModelRecord(defaults) {
     static queryUrl(params) {
       return urlJoin(
         this.urlRoot,
-        qs.stringify(params, { sort: alphabeticalSort })
+        `?${qs.stringify(params, { sort: alphabeticalSort })}`
       );
     }
 
