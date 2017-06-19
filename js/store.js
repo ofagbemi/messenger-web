@@ -26,7 +26,7 @@ const store = createStore(
 persistStore(store, {
   storage: localForage,
   transforms: [immutableTransform()],
-  blacklist: ['form'],
+  whitelist: ['auth'],
 });
 
 sagaMiddleware.run(saga);
