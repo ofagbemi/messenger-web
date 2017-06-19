@@ -10,7 +10,7 @@ export const RECEIVE_QUERY = 'sc/RECEIVE_QUERY';
 
 function mergeEntitiesIntoState(state, Model, results) {
   const obj = {};
-  results.forEach(entity => { obj[entity[Model.idField]] = entity; });
+  results.forEach(entity => { obj[entity[Model.idField]] = new Model(entity); });
 
   const entities = state.get('entities');
   const modelEntities = entities.get(Model.urlRoot) || Map();
