@@ -49,6 +49,13 @@ module.exports = {
       chunks: ['app', 'vendor'],
     }),
   ],
+  resolve: {
+    extensions: ['.js'],
+    modules: [
+      path.resolve(ROOT_DIRECTORY),
+      'node_modules',
+    ],
+  },
   module: {
     rules: [
       {

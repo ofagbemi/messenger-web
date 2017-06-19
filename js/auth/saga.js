@@ -3,13 +3,14 @@ import request from 'superagent';
 import { delay } from 'redux-saga';
 import { call, fork, put, takeEvery } from 'redux-saga/effects';
 
+import { API_URL } from 'util/constants';
+
 import {
   issueLogin,
   issueRegister,
   receiveLogin,
   clearAuth,
 } from './redux';
-import { API_URL } from '../util';
 
 
 const AUTH_URL = urlJoin(API_URL, '/auth');

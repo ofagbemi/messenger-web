@@ -1,6 +1,8 @@
 import { Map } from 'immutable';
 import { handleActions, createAction } from 'redux-actions';
 
+import store from 'store';
+
 
 const ISSUE_LOGIN = 'sc/ISSUE_LOGIN';
 const ISSUE_REGISTER = 'sc/ISSUE_REGISTER';
@@ -8,6 +10,11 @@ const RECEIVE_LOGIN = 'sc/RECEIVE_LOGIN';
 const CLEAR_AUTH = 'sc/CLEAR_AUTH';
 
 export const accessTokenSelector = state => state.getIn(['auth', 'accessToken']);
+export const authPlugin = req => {
+  const accessToken = accessTokenSelector(store.getState());
+  req.set('Authorization', `Bearer ${accessToken}`);
+  return req;
+};
 
 const promiseMetaCreator = () => {
   const promiseMeta = {};
