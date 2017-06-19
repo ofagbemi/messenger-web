@@ -41,7 +41,7 @@ function* handleIssueRegister(action) {
 }
 
 function* handleReceiveLogin({ payload }) {
-  const { expiresAt } = payload;
+  const { expires_at: expiresAt } = payload;
   if (!expiresAt) return;
 
   yield call(delay, expiresAt.getTime() - Date.now());
