@@ -17,8 +17,8 @@ const promisifyAction = action => {
   return { ...action, meta };
 };
 
-export default function ModelRecord(defaults) {
-  return class extends Record(defaults) {
+export default function ModelRecord(...args) {
+  return class extends Record(...args) {
     static idField = 'id';
     static auth = identity;
 
