@@ -9,7 +9,7 @@ import { API_URL } from 'util/constants';
 export default class ThreadModel extends ModelRecord({
   id: null,
   members: List(),
-}) {
+}, 'ThreadModel') {
   static urlRoot = urlJoin(API_URL, '/threads');
   static auth = authPlugin;
 

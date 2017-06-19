@@ -1,0 +1,14 @@
+.messenger {
+  display: flex;
+
+  &,
+  > * {
+    height: 100%;
+  }
+}
+
+.threads-panel {
+  border-right: 1px solid $border-color;
+  flex-basis: 25%;
+  min-width: 240px;
+}
