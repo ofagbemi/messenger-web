@@ -1,0 +1,37 @@
+.thread {
+  align-items: center;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  height: 64px;
+  padding: 7px 12px;
+
+  img.profile {
+    border-radius: 25px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    height: 50px;
+    width: 50px;
+  }
+
+  &.active,
+  &:hover {
+    background: $off-white;
+  }
+
+  &:active {
+    background: $light-grey;
+  }
+
+  .body {
+    flex-grow: 0;
+    overflow: hidden;
+
+    h3,
+    .preview {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

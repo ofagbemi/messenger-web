@@ -5,7 +5,7 @@ import { Record } from 'immutable';
 
 import { alphabeticalSort } from 'util/index';
 
-import { ISSUE_FIND, RECEIVE_FIND, ISSUE_QUERY, RECEIVE_QUERY } from './redux';
+import { ISSUE_FIND, RECEIVE_FIND, ISSUE_QUERY, RECEIVE_QUERY, ISSUE_CREATE } from './redux';
 
 
 const promisifyAction = action => {
@@ -75,6 +75,17 @@ export default function ModelRecord(...args) {
           model: this,
           url: this.queryUrl(payload),
           receiveFn: this.receiveQuery.bind(this),
+        },
+        payload,
+      });
+    }
+
+    static issueCreate(payload) {
+      return promisifyAction({
+        type: ISSUE_CREATE,
+        meta: {
+          model: this,
+          url: this.urlRoot,
         },
         payload,
       });

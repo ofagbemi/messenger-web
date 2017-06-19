@@ -1,0 +1,12 @@
+.messages-panel {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.messages {
+  flex-grow: 1;
+  padding: 12px 12px 0;
+  overflow: scroll;
+}

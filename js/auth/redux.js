@@ -9,6 +9,7 @@ const ISSUE_REGISTER = 'sc/ISSUE_REGISTER';
 const RECEIVE_LOGIN = 'sc/RECEIVE_LOGIN';
 const CLEAR_AUTH = 'sc/CLEAR_AUTH';
 
+export const userIdSelector = state => state.getIn(['auth', 'id']);
 export const accessTokenSelector = state => state.getIn(['auth', 'access_token']);
 export const authPlugin = req => {
   const accessToken = accessTokenSelector(store.getState());

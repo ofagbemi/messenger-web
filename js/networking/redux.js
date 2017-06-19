@@ -4,6 +4,7 @@ import { handleActions } from 'redux-actions';
 
 export const ISSUE_FIND = 'sc/ISSUE_FIND';
 export const ISSUE_QUERY = 'sc/ISSUE_QUERY';
+export const ISSUE_CREATE = 'sc/ISSUE_CREATE';
 
 export const RECEIVE_FIND = 'sc/RECEIVE_FIND';
 export const RECEIVE_QUERY = 'sc/RECEIVE_QUERY';

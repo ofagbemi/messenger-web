@@ -1,7 +1,7 @@
-import ThreadListItem from './ThreadListItem';
+import ThreadListItem from './Thread';
 
 
-const ThreadList = ({ threads }) => (
+const Thread = ({ threads }) => (
   <div>
     {threads.map(thread =>
       <ThreadListItem key={thread.id} thread={thread} />
@@ -9,4 +9,4 @@ const ThreadList = ({ threads }) => (
   </div>
 );
 
-export default ThreadList;
+export default Thread;

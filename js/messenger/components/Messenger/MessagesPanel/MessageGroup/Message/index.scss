@@ -1,0 +1,70 @@
+.message-wrapper {
+  align-items: center;
+  display: flex;
+  margin-bottom: 2px;
+
+  .date {
+    flex-shrink: 0;
+    margin: 0 0 0 10px;
+    display: none;
+    white-space: nowrap;
+  }
+
+  &:hover .date {
+    display: initial;
+  }
+
+  .message {
+    background: $off-white;
+    border-radius: 4px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    font-size: 14px;
+    padding: 6px 12px;
+    max-width: 440px;
+  }
+
+  &:first-child .message {
+    border-top-left-radius: 16px;
+  }
+
+  &:last-child {
+    margin-bottom: 12px;
+
+    .message {
+      border-bottom-left-radius: 16px;
+    }
+  }
+
+  &:not(.mine) {
+    flex-direction: row-reverse;
+    margin-right: auto;
+  }
+
+  &.mine {
+    margin-left: auto;
+
+    .date {
+      margin: 0 10px 0 0;
+    }
+
+    .message {
+      border-radius: 4px;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+    }
+
+    &:first-child .message {
+      border-top-right-radius: 16px;
+    }
+
+    &:last-child .message {
+      border-bottom-right-radius: 16px;
+    }
+
+    .message {
+      background-color: $dodger-blue;
+      color: $white;
+    }
+  }
+}

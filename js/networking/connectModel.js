@@ -1,3 +1,4 @@
+import equal from 'deep-equal';
 import { mapObjIndexed } from 'ramda';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +26,8 @@ const connectFetchFunctions = config => {
   const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
   const mergeProps = (stateProps, dispatchProps, ownProps) => ({
-    networking: mapObjIndexed(
+    networkingParams: stateProps,
+    networkingFns: mapObjIndexed(
       (fn, key) => () => fn(stateProps[key]),
       dispatchProps
     ),
@@ -59,11 +61,35 @@ export default config => WrappedComponent => {
   @connectModels(config)
   @connectFetchFunctions(config)
   class ConnectedComponent extends React.PureComponent {
-    componentWillMount() {
-      const { networking } = this.props;
-      Object.keys(networking).forEach(key => {
-        networking[key]();
+    componentDidMount() {
+      this.update(null);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      this.update(nextProps);
+    }
+
+    update(nextProps) {
+      if (nextProps === null) {
+        const { networkingParams, networkingFns } = this.props;
+        Object.keys(networkingParams).map(prop => {
+          networkingFns[prop]();
+        });
+        return;
+      }
+
+      const { networkingParams } = this.props;
+      const { networkingParams: nextNetworkingParams, networkingFns } = nextProps;
+      Object.keys(networkingParams).map(prop => {
+        if (!equal(networkingParams[prop], nextNetworkingParams[prop])) {
+          networkingFns[prop]();
+        }
+        return undefined;
       });
+      // const { networking } = this.props;
+      // Object.keys(networking).forEach(key => {
+      //   networking[key]();
+      // });
     }
 
     get isLoaded() {

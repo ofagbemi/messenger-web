@@ -6,6 +6,7 @@ import Messenger from './messenger/components/Messenger';
 const Routes = () => (
   <Router>
     <Switch>
+      <Route path="/:threadId" component={Messenger} />
       <Route path="/" component={Messenger} />
     </Switch>
   </Router>
